@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ msg }}</h1>
+  <h1 class="bg-black text-white">AAAA</h1>
 
   <p>
     Recommended IDE setup:
