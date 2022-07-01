@@ -1,13 +1,13 @@
 export const state = {
-    LobbyInfo: {
+    userInfo: {
     },
   };
   export const actions = {}
   
   export const mutations = {
-    LobbyInfo(state:any, payload:any) { //接收wbSocket的訊息
-      state.LobbyInfo=payload
-      console.log("vuex-lobby資料更新",state.LobbyInfo)
+    getUserInfo(state:any, payload:any) {
+      state.userInfo=payload
+      console.log("取得user相關資訊",state.userInfo)
     },
   };
   export const getters = {}

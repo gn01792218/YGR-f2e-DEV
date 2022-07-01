@@ -3,6 +3,11 @@ import { createRouter, createWebHistory, RouteRecordRaw ,createWebHashHistory} f
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
+    name: 'LoginPage',
+    component:()=>import('@/views/LoginPage.vue')
+  },
+  {
+    path: '/Home',
     name: 'Home',
     component:()=>import('@/views/Home.vue')
   },
