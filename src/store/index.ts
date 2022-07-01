@@ -1,10 +1,10 @@
 import { createStore } from "vuex";
-import lobby from "./lobby";
+import user from "./user";
 export default createStore({
   state: {},
   mutations: {},
   actions: {},
   modules: {
-    lobby,
+    user,
   },
 });
