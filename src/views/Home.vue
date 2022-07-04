@@ -7,7 +7,7 @@
     :card="{
       gameId:card.GameId,
       lang:Lang['zh-CN'],
-      imgSrc:'sdsdsd'
+      imgSrc:getAssetsFileURL(`images/gameIcon/${card.GameId}_cn.png`)
     }"
   />
   </div>
@@ -17,9 +17,13 @@
 import {Lang} from "@/types/lang"
 import { GameCardObj } from "@/types/game/game";
 import { watch } from "vue";
+import useUtil from '@/composable/util/useUtil'
 import useGameList from '@/composable/game/useGameList'
+import useutil from "@/composable/util/useUtil";
 import GameCard from '@/components/GameCard.vue'
 import TopBar from '@/views/TopBar.vue'
+
+const {getAssetsFileURL} = useUtil()
 const {gameList} = useGameList()
 // watch(gameList,()=>{
 //   console.log('取得資料',gameList.value)

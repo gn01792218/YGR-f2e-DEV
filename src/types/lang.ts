@@ -1,7 +1,7 @@
 export enum Lang{
-    "zh-CN",
-    "en-US",
-    "ja-JP",
-    "vi-VN",
-    "th-TH",
+    "zh-CN"="zh-CN",
+    "en-US"="en-US",
+    "ja-JP"="ja-JP",
+    "vi-VN"="vi-VN",
+    "th-TH"="th-TH",
 }
