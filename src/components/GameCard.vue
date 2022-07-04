@@ -1,8 +1,8 @@
 <template>
-    <div class="w-[200px] h-[200px] rounded-full overflow-hidden cursor-pointer"
+    <div class="w-[150px] h-[150px] rounded-full overflow-hidden cursor-pointer"
         @click="gotoGame(userName,card.gameId,Lang['zh-CN'])"
     >
-        <img :src="card.imgSrc" :alt="`遊戲 :${card.gameId}`" width="200" height="200">
+        <img :src="card.imgSrc" :alt="`遊戲 :${card.gameId}`" width="150" height="150">
     </div>
 </template>
 <script setup lang="ts">
