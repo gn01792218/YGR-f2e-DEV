@@ -2,7 +2,7 @@ import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 
 // axios實例
 const service = axios.create({
-  baseURL:process.env.VITE_APP_API_BASE_URL,
+  baseURL:"http://61.219.219.74:3101/",
   headers: { 'Content-Type': 'application/json' },
   timeout: 20000 // 超时时间
 });
@@ -52,7 +52,7 @@ service.interceptors.response.use(
     return Promise.reject(errMsg);
   }
 );
-export default (method:string ,url:string ,data = null , config?:any)=>{
+export default (method:string ,url:string ,data = {} , config?:any)=>{
     method = method.toLowerCase()
     switch(method){
         case 'get':
