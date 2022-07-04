@@ -1,5 +1,5 @@
 <template>
-<div class="max-w-[1080px] mx-auto">
+<div class="max-w-[1080px] mx-auto p-5">
     <router-view/>
 </div>
 </template>

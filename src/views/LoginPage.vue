@@ -1,7 +1,18 @@
 <template>
-  <h1 class="bg-black text-white">使用帳號</h1>
-  <input type="text" placeholder="輸入使用者帳號" v-model="userNameInput" @keyup.enter="login(userNameInput)">
-  <button @click="login(userNameInput)">登入</button>
+<div class="w-[433px] mx-auto">
+  <div class="w-full h-[255px]">
+    <img class="w-full" src="../assets/images/YGR_logo.png" alt="YGR官網LOGO">
+  </div>
+  <div class="w-full flex flex-col">
+    <label for="" class="text-center mb-5">
+      使用者帳號 : 
+      <input class="w-full border-4" type="text" placeholder="輸入使用者帳號" v-model="userNameInput" @keyup.enter="login(userNameInput)">
+    </label>
+  <button class="w-full border-4" @click="login(userNameInput)">登入</button>
+  </div>
+  
+</div>
+  
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
