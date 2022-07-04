@@ -17,26 +17,33 @@
     <img class="w-full" src="../assets/images/YGR_logo.png" alt="YGR官網LOGO">
   </div>
   <div>
-    <select name="" id="">
+    <select name="" id="" v-model="currentLang" @change="selectLang(currentLang)">
       <option
         v-for ="lang in Lang" :key="lang"
       :value="lang">{{lang}}</option>
       </select>
   </div>
 </div>
-  
 
 </template>
 <script setup lang="ts">
 import {ref} from 'vue'
 import {Lang} from "@/types/lang"
 import useUser from "@/composable/user/useUser"
+
+import { useStore } from 'vuex';
+const store = useStore()
+
 const {userName} = useUser()
+const currentLang = ref(Lang['zh-CN'])
 const plusMoneyInput = ref(0)
 function plusMoney(num:number){
   if(num <= 0) return
   console.log('增加金額',num)
   //call 增加金額 API
   plusMoneyInput.value = 0
+}
+function selectLang(lang:Lang){
+  store.commit("game/setLang",lang)
 }
 </script>

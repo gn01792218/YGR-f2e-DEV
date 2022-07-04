@@ -13,11 +13,10 @@ import { Lang } from "@/types/lang"
 import { GameCardObj } from "@/types/game/game";
 import { watch } from "vue";
 import useUtil from '@/composable/util/useUtil'
-import useGameList from '@/composable/game/useGameList'
+import useGame from '@/composable/game/useGame'
 import GameCard from '@/components/GameCard.vue'
 import TopBar from '@/views/TopBar.vue'
 
 const { getAssetsFileURL } = useUtil()
-const { gameList } = useGameList()
-Lang["en-US"]
+const { gameList } = useGame()
 </script>
