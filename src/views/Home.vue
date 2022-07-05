@@ -10,8 +10,6 @@
 </template>
 <script setup lang="ts">
 import { Lang } from "@/types/lang"
-import { GameCardObj } from "@/types/game/game";
-import { watch } from "vue";
 import useUtil from '@/composable/util/useUtil'
 import useGame from '@/composable/game/useGame'
 import GameCard from '@/components/GameCard.vue'

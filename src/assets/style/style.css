@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Design System */
+/* font */
+/* color */
+.primary-color{
+   @apply bg-cyan-600;
+}
+/* btn */
+.primary-btn{
+    @apply border-2 primary-color rounded-md text-white text-sm p-1;
+}
+/* input */
+.primary-input{
+    @apply border-4 rounded-md;
+}

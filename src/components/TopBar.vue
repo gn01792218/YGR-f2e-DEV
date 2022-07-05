@@ -1,22 +1,22 @@
 <template>
-<div class="flex justify-between">
-  <div class="flex">
+<div class="flex justify-between items-center">
+  <div class="w-[35%] flex">
     <div>
-      <h1 class="bg-black text-white">使用帳號 : {{userName}}</h1>
+      <h1 class="mb-5">使用帳號 : {{userName}}</h1>
       <label for="plusMoneyInput">
         增加金額 : 
-        <input type="text" v-model="plusMoneyInput" @keyup.enter="plusMoney(plusMoneyInput)" @focus="getNumberNull">
+        <input class="primary-input w-[150px] mr-5" type="text" v-model="plusMoneyInput" @keyup.enter="plusMoney(plusMoneyInput)" @focus="getNumberNull">
       </label>
     </div>
     <div class="flex flex-col">
-      <button>清空帳號金額</button>
-      <button @click="plusMoney(plusMoneyInput)">確認增加</button>
+      <button class="primary-btn mb-5">清空帳號金額</button>
+      <button class="primary-btn" @click="plusMoney(plusMoneyInput)">確認增加</button>
     </div>
   </div>
-  <div class="w-[433px] h-[255px]">
-    <img class="w-full" src="../assets/images/YGR_logo.png" alt="YGR官網LOGO">
+  <div class="w-[30%]">
+    <img class="w-full" src="../assets/images/YGR_logo.png" alt="YGR官網LOGO" width="433" height="225">
   </div>
-  <div>
+  <div class="w-[35%] flex justify-end items-start">
     <select name="" id="" v-model="currentLang" @change="selectLang(currentLang)">
       <option
         v-for ="lang in Lang" :key="lang"

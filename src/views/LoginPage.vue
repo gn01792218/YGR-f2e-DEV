@@ -6,9 +6,9 @@
   <div class="w-full flex flex-col">
     <label for="" class="text-center mb-5">
       使用者帳號 : 
-      <input class="w-full border-4" type="text" placeholder="輸入使用者帳號" v-model="userNameInput" @keyup.enter="login(userNameInput)">
+      <input class="w-full primary-input" type="text" placeholder="輸入使用者帳號" v-model="userNameInput" @keyup.enter="login(userNameInput)">
     </label>
-  <button class="w-full border-4" @click="login(userNameInput)">登入</button>
+  <button class="w-full border-4 primary-btn" @click="login(userNameInput)">登入</button>
   </div>
   
 </div>
