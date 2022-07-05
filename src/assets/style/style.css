@@ -5,15 +5,15 @@
 /* Design System */
 /* font */
 /* color */
-.primary-color{
+.primary-bg-color{
    @apply bg-cyan-600;
 }
-.grey-400{
+.grey-bg-400{
     @apply bg-slate-400
 }
 /* btn */
 .primary-btn{
-    @apply border-2 primary-color rounded-md text-white text-sm p-1;
+    @apply border-2 primary-bg-color rounded-md text-white text-sm p-1;
 }
 /* input */
 .primary-input{
