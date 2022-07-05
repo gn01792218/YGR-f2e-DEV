@@ -1,5 +1,5 @@
 <template>
-    <div class="w-[150px] h-[150px] rounded-full overflow-hidden cursor-pointer relative transition-all duration-300 hover:scale-105
+    <div class="w-[150px] h-[150px] rounded-full overflow-hidden cursor-pointer shadow-2xl shadow-cyan-900 relative transition-all duration-300 hover:scale-105
         before:content-[attr(data-text)] before:absolute before:w-full before:h-full before:bg-black before:bg-opacity-0 before:text-transparent before:flex before:justify-center before:items-center before:transition-all before:duration-300
         hover:before:bg-opacity-50 hover:before:text-white
     "
