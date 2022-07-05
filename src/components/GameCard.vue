@@ -10,7 +10,6 @@ import {Lang} from "../types/lang"
 import { GameCardObj } from "../types/game/game"
 import useUser from "../composable/user/useUser"
 import useGame from "../composable/game/useGame"
-import { watch } from "vue";
 defineProps<{ card: GameCardObj }>();
 const {userName} = useUser()
 const {gameLang} = useGame()
