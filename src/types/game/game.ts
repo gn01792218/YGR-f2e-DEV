@@ -1,5 +1,5 @@
 import { Lang } from "@/types/lang";
-export interface GameData{
+export interface GameData {
   CnName: string;
   EnName: string;
   GameCategoryId: number;
@@ -8,14 +8,15 @@ export interface GameData{
   ThName: string;
   TwName: string;
 }
-export interface GameCardObj{
+export interface GameCardObj {
   imgSrc: string;
   lang: Lang;
   gameId: string;
-  gameCategoryId:number
+  gameCategoryId: number;
+  gameCnName: string;
 }
-export enum GameCategory{
+export enum GameCategory {
   ALLGAME = 0,
-  SLOT=1,
-  FISH=5,
+  SLOT = 1,
+  FISH = 5,
 }

@@ -1,6 +1,10 @@
 <template>
-    <div class="w-[150px] h-[150px] rounded-full overflow-hidden cursor-pointer"
+    <div class="w-[150px] h-[150px] rounded-full overflow-hidden cursor-pointer relative transition-all duration-300 hover:scale-105
+        before:content-[attr(data-text)] before:absolute before:w-full before:h-full before:bg-black before:bg-opacity-0 before:text-transparent before:flex before:justify-center before:items-center before:transition-all before:duration-300
+        hover:before:bg-opacity-50 hover:before:text-white
+    "
         @click="gotoGame(userName,card.gameId,gameLang)"
+        :data-text="card.gameCnName"
     >
         <img :src="card.imgSrc" :alt="`遊戲 :${card.gameId}`" width="150" height="150">
     </div>

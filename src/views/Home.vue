@@ -9,7 +9,8 @@
         gameId: card.GameId,
         lang: Lang['zh-CN'],
         imgSrc:getGameImgUrl(card.GameId),
-        gameCategoryId: card.GameCategoryId
+        gameCategoryId: card.GameCategoryId,
+        gameCnName:card.CnName
       }" />
     </div>
 
