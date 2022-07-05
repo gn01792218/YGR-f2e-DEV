@@ -5,7 +5,7 @@
       <h1 class="bg-black text-white">使用帳號 : {{userName}}</h1>
       <label for="plusMoneyInput">
         增加金額 : 
-        <input type="text" v-model="plusMoneyInput" @keyup.enter="plusMoney(plusMoneyInput)">
+        <input type="text" v-model="plusMoneyInput" @keyup.enter="plusMoney(plusMoneyInput)" @focus="getNumberNull">
       </label>
     </div>
     <div class="flex flex-col">
@@ -36,12 +36,20 @@ const store = useStore()
 
 const {userName} = useUser()
 const currentLang = ref(Lang['zh-CN'])
-const plusMoneyInput = ref(0)
-function plusMoney(num:number){
-  if(num <= 0) return
-  console.log('增加金額',num)
+const plusMoneyInput = ref<number | null>(null)
+function plusMoney(num:number | null){
+  num = Number(num)
+  if(num <= 0 || isNaN(num)) {
+    alert('請勿輸入小於等於0的數字；或非數字') 
+    plusMoneyInput.value = null
+    return
+  }
   //call 增加金額 API
-  plusMoneyInput.value = 0
+  plusMoneyInput.value = null
+  console.log('增加金額',num+25)
+}
+function getNumberNull(){
+  plusMoneyInput.value = null
 }
 function selectLang(lang:Lang){
   store.commit("game/setLang",lang)
