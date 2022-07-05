@@ -19,3 +19,10 @@
 .primary-input{
     @apply border-4 rounded-md;
 }
+/* nav */
+.gameswitch .active{
+    @apply bg-black text-white;
+}
+.gameswitch li.active::before{
+    @apply scale-y-110 opacity-100;
+}

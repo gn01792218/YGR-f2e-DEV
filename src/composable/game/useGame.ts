@@ -14,9 +14,6 @@ export default function useGame(){
     const gameCategory = computed(()=>{
         return store.state.game.gameCategory
     })
-    const gameImg = computed(()=>{
-        
-    })
     function getGameImgUrl(gameid:string){
         if(gameLang.value ===Lang["zh-CN"]){
             return getAssetsFileURL(`images/gameIcon/${gameid}_cn.png`)
@@ -32,7 +29,6 @@ export default function useGame(){
         gameList,
         gameLang,
         gameCategory,
-        gameImg,
         //methods
         switchGameCategory,
         getGameImgUrl,
