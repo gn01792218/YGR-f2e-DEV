@@ -1,9 +1,9 @@
 <template>
   <TopBar />
   <GameSwitchTab :tabList="[GameCategory.ALLGAME, GameCategory.SLOT, GameCategory.FISH]" />
-  <div class="flex flex-wrap ml-3">
+  <div class="flex flex-wrap ml-3 justify-center xsm:justify-start">
     <div v-for="card in gameList" :key="card.GameId">
-      <GameCard class="m-2"
+      <GameCard class="m-1 xsm:m-2"
       v-show="gameCategory===card.GameCategoryId || gameCategory===0" 
       :card="{
         gameId: card.GameId,
