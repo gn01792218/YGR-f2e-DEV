@@ -6,12 +6,10 @@ const {resolve} = require('path')
 export default defineConfig({
   plugins: [vue()],
   base: './',
-  define:{
-    'process.env':{}
-  },
   resolve:{
     alias:{
       '@':resolve(__dirname,'src')
     }
   }
 })
+

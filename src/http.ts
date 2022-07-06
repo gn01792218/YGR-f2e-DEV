@@ -1,8 +1,7 @@
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
-
 // axios實例
 const service = axios.create({
-  baseURL:"http://61.219.219.74:3101/",
+  baseURL:import.meta.env.VITE_APP_API_BASE_URL?.toString(),
   headers: { 'Content-Type': 'application/json' },
   timeout: 20000 // 超时时间
 });
@@ -60,6 +59,5 @@ export default (method:string ,url:string ,data = {} , config?:any)=>{
         case 'post':
           return service.post(url,data)
     }
-
 }
 // export default service;
