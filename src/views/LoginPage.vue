@@ -16,20 +16,23 @@
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
-
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
+import {getUserStatus} from '@/api'
 const router = useRouter()
 const store = useStore()
 const userNameInput = ref('')
 
 function login(userAccount:string){
-  if(userAccount==='Jacky'){
-    //登入成功的邏輯
-    store.commit("user/getUser",userAccount)
-    router.push("/Home")
-  }else{
-    alert('登入失敗，請聯絡帳戶管理員')
-  }
+  getUserStatus(userNameInput.value)?.then(res=>{
+  console.log(res.data)
+  })
+  // if(userAccount==='Jacky'){
+  //   //登入成功的邏輯
+  //   store.commit("user/getUser",userAccount)
+  //   router.push("/Home")
+  // }else{
+  //   alert('登入失敗，請聯絡帳戶管理員')
+  // }
 }
 </script>

@@ -5,6 +5,8 @@ import req from './http'
 export const getGameList = () => {
   return req('post',`/GameList`,{})
 }
-
+export const getUserStatus = (userAccount:string) => {
+  return req('post',`/game/getUserStatus`,{userId:userAccount})
+}
 
 
