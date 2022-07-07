@@ -15,10 +15,11 @@ export default function useLogin(){
     //方法
     function loginRequest(userAccount:string){
         store.commit('user/setLoginPending',true)
-        getUserStatus(userAccount)?.then(res => {
+        getUserStatus({userId:userAccount})?.then(res => {
             let {ErrorCode , Message} = res.data
             switch(ErrorCode){
                 case 0: //登入成功
+                console.log(res.data)
                 store.commit("user/getUser",userAccount)
                 routerPush("/Home")
                     break;

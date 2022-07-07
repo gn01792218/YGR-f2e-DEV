@@ -12,7 +12,7 @@ export const state:State = {
   
   export const mutations = {
     getUser(state:State, payload:string) {
-      state.userData.userName=payload
+      state.userData.userId=payload
       // console.log("取得user相關資訊",state.userData)
     },
     setLoginPending(state:State,payload:boolean){

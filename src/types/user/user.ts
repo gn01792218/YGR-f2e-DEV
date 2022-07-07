@@ -1,3 +1,6 @@
 export interface User{
-    userName:string,
+    userId:string,
+}
+export interface UserAddMoneyData extends User{
+    money:number,
 }

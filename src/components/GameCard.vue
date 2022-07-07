@@ -1,6 +1,6 @@
 <template>
     <div class="w-[100px] h-[100px] 2xsm:w-[150px] 2xsm:h-[150px] overflow-hidden cursor-pointer shadow-cyan-900 relative transition-all duration-300 hover:scale-105
-        before:content-[attr(data-text)] before:absolute before:w-full before:h-full before:bg-black before:bg-opacity-0 before:text-transparent before:flex before:justify-center before:items-center before:transition-all before:duration-300
+        before:content-[attr(data-text)] before:absolute before:rounded-lg before:w-full before:h-full before:bg-black before:bg-opacity-0 before:text-transparent before:flex before:justify-center before:items-center before:transition-all before:duration-300
         hover:before:bg-opacity-50 hover:before:text-white
     "
         @click="gotoGame(userName,card.gameId,gameLang)"
