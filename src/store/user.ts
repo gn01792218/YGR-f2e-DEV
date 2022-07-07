@@ -1,10 +1,12 @@
 import {User} from '../types/user/user'
 interface State{
-  userData:User
+  userData:Partial<User>,
+  loginPending:boolean,
 }
-export const state = {
+export const state:State = {
     userData: {
     },
+    loginPending:false,
   };
   export const actions = {}
   
@@ -13,6 +15,9 @@ export const state = {
       state.userData.userName=payload
       // console.log("取得user相關資訊",state.userData)
     },
+    setLoginPending(state:State,payload:boolean){
+      state.loginPending = payload
+    }
   };
   export const getters = {}
   

@@ -1,6 +1,5 @@
 import { ref, computed } from "vue";
 import { useStore } from "vuex";
-import { Lang } from "@/types/lang"
 export default function useUser() {
     //其他composable
     //ref 響應式data
@@ -9,6 +8,9 @@ export default function useUser() {
     const store = useStore()
     const userName = computed(() => {
         return store.state.user.userData.userName
+    })
+    const isPending = computed(()=>{
+        return store.state.user.loginPending
     })
     //方法
     function plusMoney(num: number | null) {
@@ -29,6 +31,7 @@ export default function useUser() {
         //data
         plusMoneyInput,
         userName,
+        isPending,
         //methods
         plusMoney,
         setNumberNull,
