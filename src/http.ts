@@ -51,7 +51,7 @@ service.interceptors.response.use(
     return Promise.reject(errMsg);
   }
 );
-export default (method:string ,url:string ,data = {} , config?:any)=>{
+export default (method:string ,url:string ,data = {} , config?:AxiosRequestConfig)=>{
     method = method.toLowerCase()
     switch(method){
         case 'get':
