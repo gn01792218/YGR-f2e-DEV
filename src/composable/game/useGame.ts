@@ -21,9 +21,9 @@ export default function useGame() {
     //方法
     function getGameImgUrl(gameid: string) {
         if (gameLang.value === Lang["zh-CN"]) {
-            return getAssetsFileURL(`images/gameIcon/${gameid}_cn.png`)
+            return getAssetsFileURL(`images/gameIcon/${gameid}_200x200_cn.png`)
         } else {
-            return getAssetsFileURL(`images/gameIcon/${gameid}_en.png`)
+            return getAssetsFileURL(`images/gameIcon/${gameid}_200x200_en.png`)
         }
     }
     function switchGameCategory(category: GameCategory) {
