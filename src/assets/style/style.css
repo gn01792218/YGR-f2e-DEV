@@ -11,6 +11,10 @@
 .grey-bg-400{
     @apply bg-slate-400
 }
+.grey-bg-900{
+    background-color:rgb(12, 0, 0) ;
+    /* @apply bg-slate-700 */
+}
 /* btn */
 .primary-btn{
     @apply border-2 primary-bg-color rounded-md text-white p-1;
@@ -21,8 +25,30 @@
 }
 /* nav */
 .gameswitch .active{
-    @apply bg-black text-white;
+    @apply bg-yellow-800 text-white;
 }
 .gameswitch li.active::before{
-    @apply scale-y-110 opacity-100;
+    @apply scale-y-125 opacity-100;
+}
+/* vue trasition */
+.clearMoney-enter-active,
+.clearMoney-leave-active {
+    @apply transition-all duration-500 ease-in
+}
+.clearMoney-enter-from{
+    @apply opacity-100 translate-y-[15px]
+}
+.clearMoney-leave-to{
+    @apply opacity-50 translate-y-[0px]
+}
+
+.addMoney-enter-active,
+.addMoney-leave-active {
+    @apply transition-all duration-500 ease-in
+}
+.addMoney-enter-from{
+    @apply opacity-100
+}
+.addMoney-leave-to{
+    @apply opacity-0
 }

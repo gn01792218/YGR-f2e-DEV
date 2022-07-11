@@ -19,7 +19,7 @@ export default function useLogin(){
             let {ErrorCode , Message} = res.data
             switch(ErrorCode){
                 case 0: //登入成功
-                console.log(res.data)
+                // console.log(res.data)
                 store.commit("user/getUser",userAccount)
                 routerPush("/Home")
                     break;

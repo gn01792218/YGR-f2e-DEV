@@ -1,13 +1,18 @@
 import { ref } from "vue";
 import { plusMoney , clearMoney } from "@/api"
+import useError from "@/composable/error/useError"
 export default function useAddMoney(){
+    //其他compasoable
+    const { plusMoneyMsgArr,clearMoneyMsgArr,pushMsg } = useError()
     //ref 響應式data
     const plusMoneyInput = ref<number | null>(null)
     //方法
     function addMoney(userName:string , num: number | null) {
         num = Number(num)
         if (num <= 0 || isNaN(num)) {
-            alert('請勿輸入小於等於0的數字；或非數字')
+            // console.log('錯誤')
+            pushMsg(plusMoneyMsgArr.value,'請勿輸入小於等於0的數字；或非數字')
+            // alert('請勿輸入小於等於0的數字；或非數字')
             plusMoneyInput.value = null
             return
         }
@@ -16,35 +21,41 @@ export default function useAddMoney(){
             switch(res.data.ErrorCode){
                 case 0:
                     console.log(res.data)
+                    pushMsg(plusMoneyMsgArr.value,`增加金額 :${num}，當前餘額 :${res.data.Data.money}`)
                     break;
                 case 5:
-                    alert("DB發生錯誤 : "+res.data.Message)
+                    pushMsg(plusMoneyMsgArr.value,`DB發生錯誤 : ${res.data.Message}`)
+                    // alert("DB發生錯誤 : "+res.data.Message)
                     break;
                 case 7:
-                    alert("找不到該帳號")
+                    pushMsg(plusMoneyMsgArr.value,"找不到該帳號")
+                    // alert("找不到該帳號")
                     break;
                 case 100:
-                    alert(`玩家正在進行遊戲中(${res.data.Message})`)
+                    pushMsg(plusMoneyMsgArr.value,`玩家正在進行遊戲中(${res.data.Message})`)
+                    // alert(`玩家正在進行遊戲中(${res.data.Message})`)
                     break;
             }
         })
         plusMoneyInput.value = null
     }
     function clearUserMoney(userName:string){
-        alert('確定要清空使用者餘額?')
+        let clear = confirm('確定要清空使用者餘額?')
+        if(!clear) return
         clearMoney({userId:userName})?.then(res=>{
             switch(res.data.ErrorCode){
                 case 0:
                     console.log(res.data)
+                    pushMsg(clearMoneyMsgArr.value,"餘額清零成功!")
                     break;
                 case 5:
-                    alert("DB發生錯誤 : "+res.data.Message)
+                    pushMsg(clearMoneyMsgArr.value,`DB發生錯誤 : ${res.data.Message}`)
                     break;
                 case 7:
-                    alert("找不到該帳號")
+                    pushMsg(clearMoneyMsgArr.value,"找不到該帳號")
                     break;
                 case 100:
-                    alert(`玩家正在進行遊戲中(${res.data.Message})`)
+                    pushMsg(clearMoneyMsgArr.value,`玩家正在進行遊戲中(${res.data.Message})`)
                     break;
             }
         })
