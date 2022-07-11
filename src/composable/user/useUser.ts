@@ -6,9 +6,10 @@ export default function useUser() {
     const { plusMoneyInput , addMoney , clearUserMoney } = useUserMoney()
     //store
     const store = useStore()
-    const userName = computed<string>(() => {
-        return store.state.user.userData.userId
-    })
+    const userName = sessionStorage.getItem('userName')
+    // const userName = computed<string>(() => {
+    //     return store.state.user.userData.userId
+    // })
     const isPending = computed<boolean>(()=>{
         return store.state.user.loginPending
     })

@@ -20,6 +20,7 @@ export default function useLogin(){
             switch(ErrorCode){
                 case 0: //登入成功
                 // console.log(res.data)
+                sessionStorage.setItem('userName',userAccount)
                 store.commit("user/getUser",userAccount)
                 routerPush("/Home")
                     break;
@@ -33,11 +34,16 @@ export default function useLogin(){
             store.commit('user/setLoginPending',false)
           })
     }
+    function logout(){
+        sessionStorage.removeItem('userName')
+        routerPush("/")
+    }
     return {
         //data
         userNameInput,
         isPending,
         //methods
         loginRequest,
+        logout,
     }
 }

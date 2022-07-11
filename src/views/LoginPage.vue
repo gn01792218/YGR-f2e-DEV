@@ -27,6 +27,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import useLogin from "@/composable/user/useLogin"
-const { loginRequest, userNameInput,  isPending } = useLogin()
+import useLog from "@/composable/user/useLog"
+const { loginRequest, userNameInput,  isPending } = useLog()
 </script>
