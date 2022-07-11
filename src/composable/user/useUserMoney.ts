@@ -12,7 +12,7 @@ export default function useAddMoney(){
         num = Number(num)
         if (num <= 0 || isNaN(num)) {
             // console.log('錯誤')
-            pushMsg(plusMoneyMsgArr.value,'請勿輸入小於等於0的數字；或非數字')
+            pushMsg(plusMoneyMsgArr.value,'請勿輸入小於等於0的數字；或非數字',MsgType.ERROR)
             // alert('請勿輸入小於等於0的數字；或非數字')
             plusMoneyInput.value = null
             return
