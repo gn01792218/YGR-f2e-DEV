@@ -1,5 +1,6 @@
 import { ref } from "vue";
 import { plusMoney , clearMoney } from "@/api"
+import { MsgType } from '@/types/msg/msgBox'
 import useError from "@/composable/error/useError"
 export default function useAddMoney(){
     //其他compasoable
@@ -21,18 +22,18 @@ export default function useAddMoney(){
             switch(res.data.ErrorCode){
                 case 0:
                     console.log(res.data)
-                    pushMsg(plusMoneyMsgArr.value,`增加金額 :${num}，當前餘額 :${res.data.Data.money}`)
+                    pushMsg(plusMoneyMsgArr.value,`增加金額 :${num}，當前餘額 :${res.data.Data.money}`,MsgType.SUCCESS)
                     break;
                 case 5:
-                    pushMsg(plusMoneyMsgArr.value,`DB發生錯誤 : ${res.data.Message}`)
+                    pushMsg(plusMoneyMsgArr.value,`DB發生錯誤 : ${res.data.Message}`,MsgType.ERROR)
                     // alert("DB發生錯誤 : "+res.data.Message)
                     break;
                 case 7:
-                    pushMsg(plusMoneyMsgArr.value,"找不到該帳號")
+                    pushMsg(plusMoneyMsgArr.value,"找不到該帳號",MsgType.ERROR)
                     // alert("找不到該帳號")
                     break;
                 case 100:
-                    pushMsg(plusMoneyMsgArr.value,`玩家正在進行遊戲中(${res.data.Message})`)
+                    pushMsg(plusMoneyMsgArr.value,`玩家正在進行遊戲中(${res.data.Message})`,MsgType.ERROR)
                     // alert(`玩家正在進行遊戲中(${res.data.Message})`)
                     break;
             }
@@ -46,16 +47,16 @@ export default function useAddMoney(){
             switch(res.data.ErrorCode){
                 case 0:
                     console.log(res.data)
-                    pushMsg(clearMoneyMsgArr.value,"餘額清零成功!")
+                    pushMsg(clearMoneyMsgArr.value,"餘額清零成功!",MsgType.SUCCESS)
                     break;
                 case 5:
-                    pushMsg(clearMoneyMsgArr.value,`DB發生錯誤 : ${res.data.Message}`)
+                    pushMsg(clearMoneyMsgArr.value,`DB發生錯誤 : ${res.data.Message}`,MsgType.ERROR)
                     break;
                 case 7:
-                    pushMsg(clearMoneyMsgArr.value,"找不到該帳號")
+                    pushMsg(clearMoneyMsgArr.value,"找不到該帳號",MsgType.ERROR)
                     break;
                 case 100:
-                    pushMsg(clearMoneyMsgArr.value,`玩家正在進行遊戲中(${res.data.Message})`)
+                    pushMsg(clearMoneyMsgArr.value,`玩家正在進行遊戲中(${res.data.Message})`,MsgType.ERROR)
                     break;
             }
         })
