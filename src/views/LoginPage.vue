@@ -3,11 +3,17 @@
     <div class="w-full h-[255px]">
       <img class="w-full" src="../assets/images/YGR_logo.png" alt="YGR官網LOGO">
     </div>
+    <select class="w-full rounded-lg p-1 mb-1 md:mb-5" name="" id="" v-model="env"
+          @change="switchEnv(env)">
+          <!-- <option v-for="lang in Env" :key="lang" :value="lang">{{ lang }}</option> -->
+          <option :value="Env.DEV">DEV</option>
+          <option :value="Env.QA">QA</option>
+        </select>
     <div class="w-full flex flex-col">
       <label for="" class="text-center mb-5">
         使用者帳號 :
         <input class="w-full primary-input" type="text" placeholder="輸入使用者帳號" v-model="userNameInput"
-          @keyup.enter="loginRequest(userNameInput)">
+          @keyup.enter="loginRequest(userNameInput,env)">
       </label>
       <button v-if="isPending" disabled type="button"
         class="primary-btn w-full flex justify-center items-center focus:ring-4 focus:ring-blue-300">
@@ -22,11 +28,12 @@
         </svg>
         Loading...
       </button>
-      <button v-else class="w-full border-4 primary-btn" @click="loginRequest(userNameInput)">登入</button>
+      <button v-else class="w-full border-4 primary-btn" @click="loginRequest(userNameInput,env)">登入</button>
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import useLog from "@/composable/user/useLog"
-const { loginRequest, userNameInput,  isPending } = useLog()
+import { Env } from "@/types/env"
+const { loginRequest, userNameInput,switchEnv, isPending , env } = useLog()
 </script>

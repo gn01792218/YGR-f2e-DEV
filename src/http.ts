@@ -1,14 +1,20 @@
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
+import { Env } from '@/types/env'
 // axios實例
 const service = axios.create({
-  baseURL:import.meta.env.VITE_APP_API_BASE_URL?.toString(),
+  baseURL:import.meta.env.VITE_APP_API_BASE_URL_DEV?.toString(),
   headers: { 'Content-Type': 'application/json' },
   timeout: 20000 // 超时时间
 });
-
 // 请求攔截
 service.interceptors.request.use(
   (config: AxiosRequestConfig) => {
+    let env = JSON.parse(sessionStorage.getItem('env') as string)
+    if(env===Env.QA){
+      config.baseURL = import.meta.env.VITE_APP_API_BASE_URL_QA?.toString()
+    }else if(env===Env.DEV){
+      config.baseURL = import.meta.env.VITE_APP_API_BASE_URL_DEV?.toString()
+    }
     return config;
   },
   (err: any) => {
@@ -26,6 +32,9 @@ service.interceptors.response.use(
       switch (err.response.status) {
         case 403:
           errMsg = '拒絕訪問';
+          break;
+        case 404:
+          errMsg = "客戶端錯誤"
           break;
         case 408:
           errMsg = '請求超時';
