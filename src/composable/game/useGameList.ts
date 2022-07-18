@@ -1,4 +1,4 @@
-import {GameData} from '@/types/game/game'
+import { GameData } from '@/types/game/game'
 import { computed, toRaw } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { getGameList } from "@/api";
@@ -11,10 +11,10 @@ export default function useGameList() {
     return toRaw(store.state.game.gameList);
   });
   //方法
-  function fetchGameList(){
+  function fetchGameList() {
     getGameList()?.then((res) => {
-        store.commit("game/loadGameList", res.data.Data);
-      });
+      store.commit("game/loadGameList", res.data.Data);
+    });
   }
   return {
     //data

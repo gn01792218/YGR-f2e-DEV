@@ -1,52 +1,53 @@
-import {  ref , computed } from "vue"
+import { ref, computed } from "vue"
+import { Env } from '@/types/env'
 import { useStore } from "vuex"
 import { getUserStatus } from '@/api'
-import { Env } from '@/types/env'
 import useRouterUtil from '@/composable/util/useRouter'
-export default function useLogin(){
+import useEnv from "../env/useEnv"
+
+export default function useLogin() {
     //其他composable
     const { routerPush } = useRouterUtil()
+    const { env, envStr } = useEnv()
     //響應式資料
     const userNameInput = ref('')
-    const env = ref<Env>(Env.DEV)
     //store
     const store = useStore()
-    const isPending = computed(()=>{
+    const isPending = computed(() => {
         return store.state.user.loginPending
     })
-    
     //方法
-    function loginRequest(userAccount:string,env:Env){
-        sessionStorage.setItem('env',JSON.stringify(env))
-        store.commit('user/setLoginPending',true)
-        getUserStatus({userId:userAccount})?.then(res => {
-            let {ErrorCode , Message} = res.data
-            switch(ErrorCode){
+    function loginRequest(userAccount: string, env: Env) {
+        sessionStorage.setItem('env', JSON.stringify(env))
+        store.commit('user/setLoginPending', true)
+        getUserStatus({ userId: userAccount })?.then(res => {
+            let { ErrorCode, Message } = res.data
+            switch (ErrorCode) {
                 case 0: //登入成功
-                // console.log(res.data)
-                sessionStorage.setItem('userName',userAccount)
-                store.commit("user/getUser",userAccount)
-                routerPush("/Home")
+                    // console.log(res.data)
+                    sessionStorage.setItem('userName', userAccount)
+                    store.commit("user/getUser", userAccount)
+                    routerPush("/HomePage")
                     break;
                 case 5: //DB錯誤
-                alert(Message)
+                    alert(Message)
                     break;
                 case 7: //找不到該筆資料
-                alert("查無該帳號")
+                    alert("查無該帳號")
                     break;
             }
-            store.commit('user/setLoginPending',false)
-          })
-          .catch(e=>{
-            alert('oops~!發生錯誤了')
-            store.commit('user/setLoginPending',false)
-          })
+            store.commit('user/setLoginPending', false)
+        })
+            .catch(e => {
+                alert('oops~!發生錯誤了')
+                store.commit('user/setLoginPending', false)
+            })
     }
-    function logout(){
+    function logout() {
         sessionStorage.removeItem('userName')
         routerPush("/")
     }
-    function switchEnv(envType:Env){
+    function switchEnv(envType: Env) {
         env.value = envType
     }
     return {
@@ -54,6 +55,7 @@ export default function useLogin(){
         userNameInput,
         isPending,
         env,
+        envStr,
         //methods
         loginRequest,
         logout,

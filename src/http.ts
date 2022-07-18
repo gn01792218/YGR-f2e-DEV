@@ -1,8 +1,9 @@
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 import { Env } from '@/types/env'
+import { baseCompile } from '@vue/compiler-core';
 // axios實例
 const service = axios.create({
-  baseURL:import.meta.env.VITE_APP_API_BASE_URL_DEV?.toString(),
+  baseURL: import.meta.env.VITE_APP_API_BASE_URL_DEV?.toString(),
   headers: { 'Content-Type': 'application/json' },
   timeout: 20000 // 超时时间
 });
@@ -10,10 +11,13 @@ const service = axios.create({
 service.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     let env = JSON.parse(sessionStorage.getItem('env') as string)
-    if(env===Env.QA){
-      config.baseURL = import.meta.env.VITE_APP_API_BASE_URL_QA?.toString()
-    }else if(env===Env.DEV){
-      config.baseURL = import.meta.env.VITE_APP_API_BASE_URL_DEV?.toString()
+    switch(env){
+      case Env.DEV:
+        config.baseURL = import.meta.env.VITE_APP_API_BASE_URL_DEV?.toString()
+        break;
+      case Env.QA:
+        config.baseURL = import.meta.env.VITE_APP_API_BASE_URL_QA?.toString()
+        break
     }
     return config;
   },
@@ -60,13 +64,13 @@ service.interceptors.response.use(
     return Promise.reject(errMsg);
   }
 );
-export default (method:string ,url:string ,data = {} , config?:AxiosRequestConfig)=>{
-    method = method.toLowerCase()
-    switch(method){
-        case 'get':
-            return service.get(url)
-        case 'post':
-          return service.post(url,data)
-    }
+export default (method: string, url: string, data = {}, config?: AxiosRequestConfig) => {
+  method = method.toLowerCase()
+  switch (method) {
+    case 'get':
+      return service.get(url)
+    case 'post':
+      return service.post(url, data)
+  }
 }
 // export default service;

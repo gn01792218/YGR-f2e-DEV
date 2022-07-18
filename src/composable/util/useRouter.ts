@@ -1,7 +1,7 @@
 import { useRouter } from "vue-router";
-export default function useRouterUtil(){
+export default function useRouterUtil() {
     const router = useRouter()
-    function routerPush(path:string) {
+    function routerPush(path: string) {
         router.push(path)
     }
     return {
